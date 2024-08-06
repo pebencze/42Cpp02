@@ -3,7 +3,7 @@ Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form.
 
 ## Key Concepts
 
-### Canonical Form
+### Orthodox Canonical Form
 The canonical form is kind of a norm in C++ and it is a template for the syntax of a class. A class should have:</b>
 - a default constructor </b>
 - a copy constructor (to create a new instance) </b>
