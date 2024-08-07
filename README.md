@@ -51,6 +51,7 @@ Fixed::Fixed ( const float num ) {
     std::cout << "Float constructor called" << std::endl;
 }
 ```
+!!! constructors DON´T have a return type, not even const.
 
 ### Fixed Point Numbers
 - *fixing* the binary point to be at some position of a numeral </b>

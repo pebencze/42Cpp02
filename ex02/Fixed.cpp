@@ -6,13 +6,14 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 12:09:36 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/07 13:32:32 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 const int Fixed::_fraction = 8;
+const float Fixed::_epsilon = (1 >> 8);
 
 Fixed::Fixed( void ) : _fixed(0) {
     std::cout << "Default constructor called" << std::endl;
@@ -64,4 +65,59 @@ int Fixed::toInt( void ) const {
 std::ostream &operator<<( std::ostream &o, Fixed const &rhs) {
     o << rhs.toFloat();
     return (o);
+}
+
+Fixed & operator>( Fixed const & rhs) {
+    
+} 
+bool Fixed::operator<( Fixed const & rhs) const {
+    
+}  
+bool Fixed::operator>=( Fixed const & rhs) const { 
+    
+} 
+bool Fixed::operator<=( Fixed const & rhs) const { 
+    
+} 
+bool Fixed::operator==( Fixed const & rhs) const { 
+    
+} 
+bool Fixed::operator!=( Fixed const & rhs) const { 
+    
+} 
+Fixed Fixed::operator+( Fixed const & rhs) const { 
+    
+} 
+Fixed Fixed::operator-( Fixed const & rhs) const { 
+    
+} 
+Fixed Fixed::operator*( Fixed const & rhs) const { 
+    
+} 
+Fixed Fixed::operator/( Fixed const & rhs) const { 
+    
+} 
+Fixed Fixed::operator++( Fixed const & rhs ) {
+    
+}
+Fixed Fixed::operator--( Fixed const & rhs ) {
+    
+} 
+Fixed & Fixed::operator++( Fixed const & rhs) {
+    
+} 
+Fixed & Fixed::operator--( Fixed const & rhs ) {
+    
+} 
+static Fixed & Fixed::min(Fixed & lhs, Fixed & rhs) {
+    
+}
+static Fixed const & Fixed::min(Fixed const & lhs, Fixed const & rhs) {
+    
+}
+static Fixed & Fixed::max(Fixed & lhs, Fixed & rhs) {
+    
+}
+static Fixed const & Fixed::max(Fixed const & lhs, Fixed const & rhs) {
+    
 }
