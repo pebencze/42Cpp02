@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:39 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 14:07:15 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:09:30 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Fixed {
         ~Fixed( void );
 
         //=, >, <, >=, <=, ==, != +, -, *, /, ++, --
+        Fixed & operator=( Fixed const & rhs);
         bool operator<( Fixed const & rhs) const ;  
         bool operator>( Fixed const & rhs) const ;  
         bool operator>=( Fixed const & rhs) const ;  

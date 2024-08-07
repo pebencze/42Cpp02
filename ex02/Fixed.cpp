@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 14:07:48 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:26:04 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Fixed::~Fixed( void ) {
 
 Fixed & Fixed::operator=( Fixed const & rhs) {
     std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &rhs) { //why this check: can lead to self-assignment problems in more complex programs e.g. double deletion, memory corruption, or other unexpected behavior.
+    if (this != &rhs) {
         this->_fixed = rhs.getRawBits();
     }
     return *this;
@@ -92,51 +92,55 @@ bool Fixed::operator!=( Fixed const & rhs) const {
 }
 
 Fixed Fixed::operator+( Fixed const & rhs) const { 
-    Fixed result;
-    result._fixed = this->_fixed + rhs._fixed;
-    return (result);
+    float result;
+    result = this->toFloat() + rhs.toFloat();   
+    Fixed ret(result);  
+    return (ret);
 } 
 
 Fixed Fixed::operator-( Fixed const & rhs) const { 
-    Fixed result;
-    result._fixed = this->_fixed - rhs._fixed;
-    return (result);
+    float result;
+    result = this->toFloat() - rhs.toFloat();   
+    Fixed ret(result);  
+    return (ret);
 } 
 
 Fixed Fixed::operator*( Fixed const & rhs) const { 
-    Fixed result;
-    result._fixed = this->_fixed * rhs._fixed;
-    return (result);
+    float result;
+    result = this->toFloat() * rhs.toFloat();   
+    Fixed ret(result);  
+    return (ret);
 } 
 
 Fixed Fixed::operator/( Fixed const & rhs) const { 
-    Fixed result;
-    result._fixed = this->_fixed / rhs._fixed;
-    return (result);
+    float result;
+    result = this->toFloat() / rhs.toFloat(); //important to calculate with floats, not to lose fraction  
+    Fixed ret(result);  
+    return (ret);
 } 
 
 //postfix
 Fixed Fixed::operator++(int) { 
     Fixed result = *this; //create snapshot
-    this->_fixed += this->_epsilon; //update
+    this->_fixed++; //update
     return (result); //return snapshot
 }
 
 Fixed Fixed::operator--(int) {
     Fixed temp = *this;
-    this->_fixed -= this->_epsilon;
+    this->_fixed--;
     return (temp);
 } 
 
 //prefix
 Fixed & Fixed::operator++() {
-    this->_fixed += this->_epsilon;
+    this->_fixed++;
     return (*this);
 } 
 
 Fixed & Fixed::operator--() {
-    this->_fixed -= this->_epsilon;
-    return (*this)
+    this->_fixed--;
+    return (*this);
 } 
 
 Fixed & Fixed::min(Fixed & lhs, Fixed & rhs) {

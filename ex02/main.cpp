@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:46 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 12:43:41 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:28:20 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main( void ) {
     Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
     
     std::cout << a << std::endl;
+    //std::cout << a.getRawBits() << std::endl;
     std::cout << ++a << std::endl;
     std::cout << a << std::endl;
     std::cout << a++ << std::endl;
