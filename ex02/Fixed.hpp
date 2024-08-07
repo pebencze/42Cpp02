@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:39 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 13:30:16 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:07:15 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Fixed {
 
         //=, >, <, >=, <=, ==, != +, -, *, /, ++, --
         bool operator<( Fixed const & rhs) const ;  
+        bool operator>( Fixed const & rhs) const ;  
         bool operator>=( Fixed const & rhs) const ;  
         bool operator<=( Fixed const & rhs) const ;  
         bool operator==( Fixed const & rhs) const ;  
@@ -34,10 +35,10 @@ class Fixed {
         Fixed operator-( Fixed const & rhs) const ;  
         Fixed operator*( Fixed const & rhs) const ;  
         Fixed operator/( Fixed const & rhs) const ;  
-        Fixed operator++( Fixed const & rhs );
-        Fixed operator--( Fixed const & rhs ); 
-        Fixed & operator++( Fixed const & rhs);  
-        Fixed & operator--( Fixed const & rhs );
+        Fixed operator++(int); //dummy parameter int
+        Fixed operator--(int); 
+        Fixed & operator++();  
+        Fixed & operator--();
         
         static Fixed & min(Fixed & lhs, Fixed & rhs); 
         static Fixed const & min(Fixed const & lhs, Fixed const & rhs); 

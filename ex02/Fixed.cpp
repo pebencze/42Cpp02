@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 13:32:32 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:07:48 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,57 +67,102 @@ std::ostream &operator<<( std::ostream &o, Fixed const &rhs) {
     return (o);
 }
 
-Fixed & operator>( Fixed const & rhs) {
-    
+bool Fixed::operator>( Fixed const & rhs) const {
+    return (this->_fixed > rhs._fixed);
 } 
+
 bool Fixed::operator<( Fixed const & rhs) const {
-    
-}  
+    return (this->_fixed < rhs._fixed);
+}
+
 bool Fixed::operator>=( Fixed const & rhs) const { 
-    
-} 
+    return (this->_fixed >= rhs._fixed);
+}
+ 
 bool Fixed::operator<=( Fixed const & rhs) const { 
-    
+    return (this->_fixed <= rhs._fixed);
 } 
+
 bool Fixed::operator==( Fixed const & rhs) const { 
-    
+    return (this->_fixed == rhs._fixed);
 } 
+
 bool Fixed::operator!=( Fixed const & rhs) const { 
-    
-} 
+    return (this->_fixed != rhs._fixed);
+}
+
 Fixed Fixed::operator+( Fixed const & rhs) const { 
-    
+    Fixed result;
+    result._fixed = this->_fixed + rhs._fixed;
+    return (result);
 } 
+
 Fixed Fixed::operator-( Fixed const & rhs) const { 
-    
+    Fixed result;
+    result._fixed = this->_fixed - rhs._fixed;
+    return (result);
 } 
+
 Fixed Fixed::operator*( Fixed const & rhs) const { 
-    
+    Fixed result;
+    result._fixed = this->_fixed * rhs._fixed;
+    return (result);
 } 
+
 Fixed Fixed::operator/( Fixed const & rhs) const { 
-    
+    Fixed result;
+    result._fixed = this->_fixed / rhs._fixed;
+    return (result);
 } 
-Fixed Fixed::operator++( Fixed const & rhs ) {
-    
+
+//postfix
+Fixed Fixed::operator++(int) { 
+    Fixed result = *this; //create snapshot
+    this->_fixed += this->_epsilon; //update
+    return (result); //return snapshot
 }
-Fixed Fixed::operator--( Fixed const & rhs ) {
-    
+
+Fixed Fixed::operator--(int) {
+    Fixed temp = *this;
+    this->_fixed -= this->_epsilon;
+    return (temp);
 } 
-Fixed & Fixed::operator++( Fixed const & rhs) {
-    
+
+//prefix
+Fixed & Fixed::operator++() {
+    this->_fixed += this->_epsilon;
+    return (*this);
 } 
-Fixed & Fixed::operator--( Fixed const & rhs ) {
-    
+
+Fixed & Fixed::operator--() {
+    this->_fixed -= this->_epsilon;
+    return (*this)
 } 
-static Fixed & Fixed::min(Fixed & lhs, Fixed & rhs) {
-    
+
+Fixed & Fixed::min(Fixed & lhs, Fixed & rhs) {
+    if (lhs._fixed < rhs._fixed)
+        return (lhs);
+    else
+        return (rhs);
 }
-static Fixed const & Fixed::min(Fixed const & lhs, Fixed const & rhs) {
-    
+
+Fixed const & Fixed::min(Fixed const & lhs, Fixed const & rhs) {
+    if (lhs._fixed < rhs._fixed)
+        return (lhs);
+    else
+        return (rhs);
 }
-static Fixed & Fixed::max(Fixed & lhs, Fixed & rhs) {
-    
+
+Fixed & Fixed::max(Fixed & lhs, Fixed & rhs) {
+    if (lhs._fixed > rhs._fixed)
+        return (lhs);
+    else
+        return (rhs);
 }
-static Fixed const & Fixed::max(Fixed const & lhs, Fixed const & rhs) {
-    
+
+Fixed const & Fixed::max(Fixed const & lhs, Fixed const & rhs) {
+    if (lhs._fixed > rhs._fixed)
+        return (lhs);
+    else
+        return (rhs);
 }

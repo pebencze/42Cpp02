@@ -53,6 +53,14 @@ Fixed::Fixed ( const float num ) {
 ```
 !!! constructors DON´T have a return type, not even const.
 
+#### Operator Overload ++ / --
+	1.	Prefix Increment (++x):
+	•	Signature: Fixed& operator++();
+	•	Behavior: Increments the value of the object and returns a reference to the updated object.
+	2.	Postfix Increment (x++):
+	•	Signature: Fixed operator++(int);
+	•	Behavior: Increments the value of the object but returns the value before the increment. The int parameter is a dummy parameter to distinguish it from the prefix increment operator.
+
 ### Fixed Point Numbers
 - *fixing* the binary point to be at some position of a numeral </b>
 - two parameters: </b>
