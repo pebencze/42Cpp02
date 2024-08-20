@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 14:26:04 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:52:45 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed::Fixed ( const int num ) {
 
 Fixed::Fixed ( const float num ) {
     std::cout << "Float constructor called" << std::endl;
-    this->_fixed = static_cast<int>(roundf(num * (1 << this->_fraction))); 
+    this->_fixed = static_cast<int>(roundf(num * (1 << this->_fraction)));
 }
 
 Fixed::Fixed( Fixed const & src) {
@@ -55,7 +55,7 @@ void Fixed::setRawBits( int const raw ) {
 }
 
 float Fixed::toFloat( void ) const {
-    return (static_cast<float>(this->_fixed) / (1 << this->_fraction)); 
+    return (static_cast<float>(this->_fixed) / (1 << this->_fraction));
 }
 
 int Fixed::toInt( void ) const {
@@ -69,58 +69,58 @@ std::ostream &operator<<( std::ostream &o, Fixed const &rhs) {
 
 bool Fixed::operator>( Fixed const & rhs) const {
     return (this->_fixed > rhs._fixed);
-} 
+}
 
 bool Fixed::operator<( Fixed const & rhs) const {
     return (this->_fixed < rhs._fixed);
 }
 
-bool Fixed::operator>=( Fixed const & rhs) const { 
+bool Fixed::operator>=( Fixed const & rhs) const {
     return (this->_fixed >= rhs._fixed);
 }
- 
-bool Fixed::operator<=( Fixed const & rhs) const { 
+
+bool Fixed::operator<=( Fixed const & rhs) const {
     return (this->_fixed <= rhs._fixed);
-} 
+}
 
-bool Fixed::operator==( Fixed const & rhs) const { 
+bool Fixed::operator==( Fixed const & rhs) const {
     return (this->_fixed == rhs._fixed);
-} 
+}
 
-bool Fixed::operator!=( Fixed const & rhs) const { 
+bool Fixed::operator!=( Fixed const & rhs) const {
     return (this->_fixed != rhs._fixed);
 }
 
-Fixed Fixed::operator+( Fixed const & rhs) const { 
+Fixed Fixed::operator+( Fixed const & rhs) const {
     float result;
-    result = this->toFloat() + rhs.toFloat();   
-    Fixed ret(result);  
+    result = this->toFloat() + rhs.toFloat();
+    Fixed ret(result);
     return (ret);
-} 
+}
 
-Fixed Fixed::operator-( Fixed const & rhs) const { 
+Fixed Fixed::operator-( Fixed const & rhs) const {
     float result;
-    result = this->toFloat() - rhs.toFloat();   
-    Fixed ret(result);  
+    result = this->toFloat() - rhs.toFloat();
+    Fixed ret(result);
     return (ret);
-} 
+}
 
-Fixed Fixed::operator*( Fixed const & rhs) const { 
+Fixed Fixed::operator*( Fixed const & rhs) const {
     float result;
-    result = this->toFloat() * rhs.toFloat();   
-    Fixed ret(result);  
+    result = this->toFloat() * rhs.toFloat();
+    Fixed ret(result);
     return (ret);
-} 
+}
 
-Fixed Fixed::operator/( Fixed const & rhs) const { 
+Fixed Fixed::operator/( Fixed const & rhs) const {
     float result;
-    result = this->toFloat() / rhs.toFloat(); //important to calculate with floats, not to lose fraction  
-    Fixed ret(result);  
+    result = this->toFloat() / rhs.toFloat(); //important to calculate with floats, not to lose fraction
+    Fixed ret(result);
     return (ret);
-} 
+}
 
 //postfix
-Fixed Fixed::operator++(int) { 
+Fixed Fixed::operator++(int) {
     Fixed result = *this; //create snapshot
     this->_fixed++; //update
     return (result); //return snapshot
@@ -130,43 +130,31 @@ Fixed Fixed::operator--(int) {
     Fixed temp = *this;
     this->_fixed--;
     return (temp);
-} 
+}
 
 //prefix
 Fixed & Fixed::operator++() {
     this->_fixed++;
     return (*this);
-} 
+}
 
 Fixed & Fixed::operator--() {
     this->_fixed--;
     return (*this);
-} 
+}
 
 Fixed & Fixed::min(Fixed & lhs, Fixed & rhs) {
-    if (lhs._fixed < rhs._fixed)
-        return (lhs);
-    else
-        return (rhs);
+    return ((lhs._fixed < rhs._fixed) ? lhs : rhs);
 }
 
 Fixed const & Fixed::min(Fixed const & lhs, Fixed const & rhs) {
-    if (lhs._fixed < rhs._fixed)
-        return (lhs);
-    else
-        return (rhs);
+    return ((lhs._fixed < rhs._fixed) ? lhs : rhs);
 }
 
 Fixed & Fixed::max(Fixed & lhs, Fixed & rhs) {
-    if (lhs._fixed > rhs._fixed)
-        return (lhs);
-    else
-        return (rhs);
+    return ((lhs._fixed > rhs._fixed) ? lhs : rhs);
 }
 
 Fixed const & Fixed::max(Fixed const & lhs, Fixed const & rhs) {
-    if (lhs._fixed > rhs._fixed)
-        return (lhs);
-    else
-        return (rhs);
+	return ((lhs._fixed > rhs._fixed) ? lhs : rhs);
 }
