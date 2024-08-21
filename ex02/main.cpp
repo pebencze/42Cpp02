@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:46 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/20 15:59:50 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/21 11:57:33 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,17 @@ int main() {
     Fixed b(10);
     Fixed c(42.42f);
     Fixed d(b);
+	Fixed zero(0);
 
     // Test assignment operator
     a = Fixed(1234.4321f);
+
+	//values
+	std::cout << "a: " << a << std::endl;
+	std::cout << "b: " << b << std::endl;
+	std::cout << "c: " << c << std::endl;
+	std::cout << "d: " << d << std::endl;
+	std::cout << "zero: " << zero << std::endl;
 
     // Test comparison operators
     std::cout << "b < c: " << (b < c) << std::endl;
@@ -38,11 +46,15 @@ int main() {
     Fixed f = c - b;
     Fixed g = b * c;
     Fixed h = c / b;
+	Fixed j = c / zero;
+	Fixed k = b / zero;
 
     std::cout << "b + c: " << e << std::endl;
     std::cout << "c - b: " << f << std::endl;
     std::cout << "b * c: " << g << std::endl;
     std::cout << "c / b: " << h << std::endl;
+	std::cout << "c / 0: " << j << std::endl;
+	std::cout << "b / 0: " << k << std::endl;
 
     // Test increment and decrement operators
     Fixed i;

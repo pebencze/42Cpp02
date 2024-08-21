@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/20 15:52:45 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/21 12:02:13 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ Fixed Fixed::operator*( Fixed const & rhs) const {
 
 Fixed Fixed::operator/( Fixed const & rhs) const {
     float result;
-    result = this->toFloat() / rhs.toFloat(); //important to calculate with floats, not to lose fraction
+	if (rhs == 0)
+		result = this->toInt() / rhs.toInt();
+	else
+    	result = this->toFloat() / rhs.toFloat(); //important to calculate with floats, not to lose fraction
     Fixed ret(result);
     return (ret);
 }
