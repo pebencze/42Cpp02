@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:46 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/21 11:57:33 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/21 12:49:40 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,17 @@ int main() {
     Fixed f = c - b;
     Fixed g = b * c;
     Fixed h = c / b;
-	Fixed j = c / zero;
-	Fixed k = b / zero;
+	//Fixed j = c / zero;
+	//Fixed k = b / zero;
+	Fixed l = b * zero;
 
     std::cout << "b + c: " << e << std::endl;
     std::cout << "c - b: " << f << std::endl;
     std::cout << "b * c: " << g << std::endl;
+	std::cout << "b * 0: " << l << std::endl;
     std::cout << "c / b: " << h << std::endl;
-	std::cout << "c / 0: " << j << std::endl;
-	std::cout << "b / 0: " << k << std::endl;
+	//std::cout << "c / 0: " << j << std::endl;
+	//std::cout << "b / 0: " << k << std::endl;
 
     // Test increment and decrement operators
     Fixed i;
