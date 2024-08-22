@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:46 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/22 16:31:09 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/22 18:03:30 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int main() {
 
     // Test assignment operator
     a = Fixed(1234.4321f);
+	/* Fixed largeNumber(237480566);
+	Fixed largeNumber2(237480567);
+	std::cout << "Overflow: " << largeNumber2 * largeNumber2 << std::endl; */
 
 	//values
 	std::cout << "a: " << a << std::endl;
