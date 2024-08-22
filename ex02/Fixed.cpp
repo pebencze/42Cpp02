@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/21 12:02:13 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/22 16:43:57 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ float Fixed::toFloat( void ) const {
 }
 
 int Fixed::toInt( void ) const {
-    return (this->_fixed >> this->_fraction);
+	// adding 0.5 in fixed-point representation before shifting for rounding purposes
+    return ((this->_fixed + (1 << (this->_fraction - 1))) >> this->_fraction);
 }
 
 std::ostream &operator<<( std::ostream &o, Fixed const &rhs) {

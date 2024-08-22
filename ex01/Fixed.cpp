@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 12:09:36 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/08/22 16:42:05 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Fixed::Fixed ( const int num ) {
 
 Fixed::Fixed ( const float num ) {
     std::cout << "Float constructor called" << std::endl;
-    this->_fixed = static_cast<int>(roundf(num * (1 << this->_fraction))); 
+    this->_fixed = static_cast<int>(roundf(num * (1 << this->_fraction)));
 }
 
 Fixed::Fixed( Fixed const & src) {
@@ -54,11 +54,12 @@ void Fixed::setRawBits( int const raw ) {
 }
 
 float Fixed::toFloat( void ) const {
-    return (static_cast<float>(this->_fixed) / (1 << this->_fraction)); 
+    return (static_cast<float>(this->_fixed) / (1 << this->_fraction));
 }
 
 int Fixed::toInt( void ) const {
-    return (this->_fixed >> this->_fraction);
+	// adding 0.5 in fixed-point representation before shifting for rounding purposes
+    return ((this->_fixed + (1 << (this->_fraction - 1))) >> this->_fraction);
 }
 
 std::ostream &operator<<( std::ostream &o, Fixed const &rhs) {
