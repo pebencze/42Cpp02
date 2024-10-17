@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:39 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 12:00:21 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/10/17 15:40:45 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ class Fixed {
         void setRawBits( int const raw );
         float toFloat( void ) const;
         int toInt( void ) const;
-        
+
     private:
         int _fixed;
         static const int _fraction;
 };
 
-std::ostream &operator<<( std::ostream &o, Fixed const & rhs);
-        
+std::ostream &operator<<( std::ostream &o, Fixed const & rhs); //overload of the insertion operator
+
 #endif

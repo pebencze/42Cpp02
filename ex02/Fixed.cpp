@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/22 16:43:57 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/10/17 17:16:22 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,24 @@ const int Fixed::_fraction = 8;
 const float Fixed::_epsilon = (1 >> 8);
 
 Fixed::Fixed( void ) : _fixed(0) {
-    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed ( const int num ) {
-    std::cout << "Int constructor called" << std::endl;
     this->_fixed = (num << this->_fraction);
 }
 
 Fixed::Fixed ( const float num ) {
-    std::cout << "Float constructor called" << std::endl;
     this->_fixed = static_cast<int>(roundf(num * (1 << this->_fraction)));
 }
 
 Fixed::Fixed( Fixed const & src) {
-    std::cout << "Copy constructor called" << std::endl;
     *this = src;
 }
 
 Fixed::~Fixed( void ) {
-    std::cout << "Destructor called" << std::endl;
 }
 
 Fixed & Fixed::operator=( Fixed const & rhs) {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &rhs) {
         this->_fixed = rhs.getRawBits();
     }
