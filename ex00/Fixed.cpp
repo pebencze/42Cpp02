@@ -6,16 +6,16 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/07 10:34:22 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/10/17 15:37:17 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-const int Fixed::_fraction = 8;
+const int Fixed::_fraction = 8; //initializing a static member
 
-Fixed::Fixed( void ) : _fixed(0) {
+Fixed::Fixed( void ) : _fixed(0) { //member initializer list
     std::cout << "Default constructor called" << std::endl;
 }
 
@@ -42,5 +42,6 @@ int Fixed::getRawBits( void ) const {
 }
 
 void Fixed::setRawBits( int const raw ) {
+	std::cout << "setRawBits member function called" << std::endl;
     this->_fixed = raw;
 }
