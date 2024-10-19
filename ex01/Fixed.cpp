@@ -6,7 +6,7 @@
 /*   By: pbencze <pbencze@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:03:42 by pbencze           #+#    #+#             */
-/*   Updated: 2024/08/22 16:42:05 by pbencze          ###   ########.fr       */
+/*   Updated: 2024/10/19 13:55:12 by pbencze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ Fixed::Fixed ( const int num ) {
 Fixed::Fixed ( const float num ) {
     std::cout << "Float constructor called" << std::endl;
     this->_fixed = static_cast<int>(roundf(num * (1 << this->_fraction)));
-}
-
-Fixed::Fixed( Fixed const & src) {
-    std::cout << "Copy constructor called" << std::endl;
-    *this = src;
 }
 
 Fixed::~Fixed( void ) {
